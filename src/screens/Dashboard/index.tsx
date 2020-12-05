@@ -1,20 +1,25 @@
 import React, { useContext } from 'react';
-import { Button, View } from 'react-native';
+import { Text } from 'react-native';
+import CenteredContainer from '../../components/CenteredContainer';
 import AuthContext from '../../hooks/useAuth'
+import { ProfileImage, Username, ButtonText, SignOutButton } from './styles';
 
 
 const Dashboard: React.FC = () => {
 
-    const { signOut } = useContext(AuthContext);
+    const { user, signOut } = useContext(AuthContext);
 
     return (
-        <View style={{ 
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
-            <Button title='Sign Out' onPress={signOut} />
-        </View>
+        <CenteredContainer>
+            <ProfileImage source={{ uri: user?.avatarURL }} />
+            <Username>Username:  {user?.username}</Username>
+            <Username>Name:  {user?.name}</Username>
+            <SignOutButton onPress={signOut}>
+                <ButtonText>
+                    Sign Out
+                </ButtonText>
+            </SignOutButton>
+        </CenteredContainer>
     );
 }
 

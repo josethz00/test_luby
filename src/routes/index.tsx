@@ -8,7 +8,7 @@ import AuthContext from '../hooks/useAuth';
 
 const Routes = () => {
 
-    const { signed, loading } = useContext(AuthContext);
+    const { signed, user, loading } = useContext(AuthContext);
 
     if (loading) {
         return <Lottie source={require('../assets/animations/loading.json')} autoPlay loop resizeMode="contain"/>;
